@@ -1,0 +1,618 @@
+/* RESET */
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* FONTES */
+@font-face {
+    font-family: 'Lato-regular';
+    src: url(../fonts/Lato/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Lato-bold';
+    src: url(../fonts/Lato/Lato-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Questrial';
+    src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Corinthia-regular';
+    src: url(../fonts/Corinthia/Corinthia-Regular.ttf);
+}
+
+/* CONTAINER */
+.container {
+    margin: 0 200px;
+}
+
+/* HEADER */
+#header {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 25px 0;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 4px 8px 0px #5d758d1f;
+    opacity: 1;
+    z-index: 100;
+}
+
+#header a {
+    padding: 8px 16px;
+    color: #5d758d;
+    font: 400 16px 'Lato-Regular', sans-serif;
+    transition: 0.2s all ease-in-out;
+    border-radius: 8px;
+}
+
+#header a:hover {
+    color: #ffffff;
+    background-color: #cd9097;
+}
+
+/* SECTION HOME */
+/* SAVE */
+#home .save {
+    background-image: url(../images/fundo_save.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 80px;
+}
+
+#home .save .p-save {
+    padding: 130px 0;
+}
+
+#home .save .texto-save {
+    color: #bfbfbf;
+    font: 400 32px 'Questrial', sans-serif;
+    letter-spacing: 6.4px;
+}
+
+#home .save .nomes {
+    color: #cd9097;
+    font: 400 120px 'Corinthia-regular', sans-serif;
+    margin: 30px 0 65px
+}
+
+#home .save .data {
+    color: #787878;
+    font: 400 30px 'Questrial', sans-serif;
+    letter-spacing: 6.5px;
+    margin-top: 8px;
+}
+
+/* CONTAGEM */
+.contagem {
+    text-align: center;
+    background-color: #cd9097;
+    padding: 88px 8px;
+}
+
+.contagem p {
+    color: #ffffff;
+    font: 400 60px 'Corinthia-regular', sans-serif;
+    letter-spacing: 3px;
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.box {
+    background-color: #fff;
+    border: 2px solid #cd9097;
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.box span {
+    font: 400 40px 'Lato-regular', sans-serif;
+    color: #cd9097;
+}
+
+.box p {
+    font: 400 14px 'Lato-regular', sans-serif;
+    color: #cd9097;
+    margin: 0;
+}
+
+/* FOTO */
+.foto {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.foto img {
+    width: 80%;
+}
+
+.foto p {
+    font: 400 16px 'Lato-regular', sans-serif;
+    color: #787878;
+    width: 80%;
+    margin-top: 30px;
+    text-align: justify;
+}
+
+/* O CASAL */
+#ocasal {
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+h2 {
+    font: 400 60px 'Corinthia-regular', cursive;
+    color: #cd9097;
+    margin: 90px 0 30px 0;
+    letter-spacing: 3px;
+}
+
+.juntos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.foto-coracao {
+    width: 40%;
+    height: 40%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.juntos p {
+    max-width: 500px;
+    line-height: 1.6;
+    font: 400 16px 'Lato-regular', sans-serif;
+    color: #787878;
+    text-align: justify;
+}
+
+/* CERIMONIA */
+#cerimonia {
+    padding: 40px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.local {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.infos p {
+    max-width: 500px;
+    line-height: 1.6;
+    font: 400 16px 'Lato-regular', sans-serif;
+    color: #787878;
+    text-align: center;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.local .legenda {
+    font: 500 14px 'Lato-regular', sans-serif;
+    color: #787878;
+    text-align: center;
+}
+
+.mapa {
+    margin-top: 50px;
+}
+
+/* RECEPÇÃO */
+#recepcao {
+    padding: 40px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.local {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* PRESENTES */
+#presentes {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.card-lista {
+    max-width: 100%;
+    margin: 0 auto;
+    border: #cd9097 solid 2px;
+    border-radius: 30px;
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.teaser {
+    margin-bottom: 25px;
+}
+
+.teaser p {
+    font-size: 18px;
+    color: #000000;
+    line-height: 1.5;
+    font-family: 'Lato-regular', serif;
+}
+
+.btn-lista {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    background-color: #cd9097;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font: 400 16px 'Lato-bold', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-lista:hover {
+    background-color: #b47f86;
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(255, 107, 107, 0.6);
+    color: white;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* CONFIRME SUA PRESENÇA */
+#presenca {
+    padding: 0px 20px;
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: 'Lato-regular', sans-serif;
+    text-align: center;
+}
+
+#formPresenca {
+    text-align: left;
+    border-radius: 8px;
+    border: 1px solid #d4dbe3;
+    padding: 40px;
+}
+
+#formPresenca .form,
+#formPresenca .evento{
+    margin-bottom: 40px;
+}
+
+#presenca .form label {
+    display: block;
+    color: #5d758d;
+    font: 700 16px "Lato-bold", sans-serif;
+    line-height: 22px;
+    margin-bottom: 8px;
+}
+
+#presenca input,
+#presenca textarea {
+    width: 100%;
+    height: 48px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font: 400 15px "Lato-regular", sans-serif;
+    box-sizing: border-box;
+    transition: border 0.3s;
+    line-height: 1.4;
+    color: #929292;
+    letter-spacing: 0.5px;
+}
+
+#presenca input::placeholder,
+#presenca textarea::placeholder {
+    color: #929292;
+}
+
+#presenca input:focus,
+#presenca textarea:focus {
+    border-color: #cd9097;
+    outline: none;
+}
+
+#presenca textarea {
+    resize: vertical; /* Permite redimensionar só pra baixo */
+    min-height: 80px; /* Altura mínima */
+    max-height: 300px; /* Altura máxima */
+}
+
+#presenca input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+    height: 10px;
+}
+
+#presenca small {
+    display: block;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+#presenca button {
+    display: block;      
+    margin: 40px auto 0;
+    padding: 15px 30px;
+    background: #cd9097;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px 0px #5d758d1f;
+    opacity: 1;
+}
+
+#presenca button:hover {
+    background: #a07177;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- CAMPOS ADICIONAIS (embaixo) --- */
+#acompanhantes-adultos,
+#nomes-criancas {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#acompanhantes-adultos .form,
+#nomes-criancas .form {
+  background: #fff;
+  border: 1px solid #d4dbe3;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px 0;
+  animation: fadeIn 0.4s ease;
+}
+
+#acompanhantes-adultos label,
+#nomes-criancas label {
+  display: block;
+  color: #5d758d;
+  font: 700 15px "Lato-bold", sans-serif;
+  margin-bottom: 6px;
+}
+
+#acompanhantes-adultos input,
+#nomes-criancas input {
+  width: 100%;
+  height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: 400 15px "Lato-regular", sans-serif;
+  color: #555;
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TERMINO */
+
+#formPresenca .evento{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #d4dbe3;
+    background: #fff;
+    padding: 16px;
+}
+
+#presenca .evento label {
+    display: block;
+    color: #5d758d;
+    font: 700 16px "Lato-bold", sans-serif;
+    line-height: 22px;
+    white-space: nowrap;
+}
+
+#presenca .evento input[type="number"] {
+    width: 60px; 
+    height: 40px;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font: 400 15px "Lato-regular", sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#presenca .evento input[type="number"]:focus {
+    border-color: #cd9097;
+    outline: none;
+}
+
+#presenca .radio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font: 700 16px "Lato-bold", sans-serif;
+    margin: 0 20px;
+}
+
+/* RECADOS */
+#recados {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#formRecado {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    text-align: left;
+    border: 1px solid #d4dbe3;
+    border-radius: 8px;
+    padding: 30px;
+    background: #ffffff;
+}
+
+#formRecado input,
+#formRecado textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font: 400 15px 'Lato-regular', sans-serif;
+    color: #555;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+
+#formRecado input:focus,
+#formRecado textarea:focus {
+    border-color: #cd9097;
+    outline: none;
+}
+
+#formRecado textarea {
+    resize: vertical; /* Permite redimensionar só pra baixo */
+    min-height: 80px; /* Altura mínima */
+    max-height: 300px; /* Altura máxima */
+}
+
+#formRecado button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #cd9097;
+    color: #fff;
+    font: 400 16px 'Lato-bold', sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#formRecado button:hover {
+    background-color: #b47f86;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(255, 107, 107, 0.4);
+}
+
+/* Lista de recados */
+#listaRecados {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.recado {
+    background: #ffffff;
+    border: 1px solid #d4dbe3;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recado:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
+}
+
+.recado strong {
+    color: #cd9097;
+    font: 700 16px 'Lato-bold', sans-serif;
+}
+
+.recado p {
+    font: 400 15px 'Lato-regular', sans-serif;
+    color: #555;
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+#recados label {
+    display: block;
+    color: #5d758d;
+    font: 700 16px "Lato-bold", sans-serif;
+    line-height: 22px;
+    white-space: nowrap;
+}
