@@ -15,27 +15,59 @@ if ('ontouchstart' in window || navigator.maxTouchPoints) {
 // =======================
 // TIMER DO EVENTO
 // =======================
-const dataEvento = new Date(2026, 0, 17, 19, 30, 0).getTime();
+document.addEventListener('DOMContentLoaded', function () {
+  try {
+    // elementos (pega uma vez)
+    const diasEl = document.getElementById("dias");
+    const horasEl = document.getElementById("horas");
+    const minutosEl = document.getElementById("minutos");
+    const segundosEl = document.getElementById("segundos");
+    const timerContainer = document.getElementById("timer");
 
-const intervalo = setInterval(function () {
-    const agora = new Date().getTime();
-    const distancia = dataEvento - agora;
-
-    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-
-    document.getElementById("dias").textContent = dias;
-    document.getElementById("horas").textContent = horas;
-    document.getElementById("minutos").textContent = minutos;
-    document.getElementById("segundos").textContent = segundos;
-
-    if (distancia < 0) {
-        clearInterval(intervalo);
-        document.getElementById("timer").innerHTML = "💍 Chegou o grande dia! 💖";
+    // verifica existência (se algum não existir, sai sem quebrar)
+    if (!diasEl || !horasEl || !minutosEl || !segundosEl || !timerContainer) {
+      console.warn('Timer: elementos do DOM não encontrados. Abortando timer.');
+      return;
     }
-}, 1000);
+
+    // Defina aqui o instante exato do evento em UTC para evitar problemas de parsing/fuso
+    // Seu horário é 2026-01-17 19:30 (horário de Brasil -03:00).
+    // Em UTC esse instante é 2026-01-17 22:30 (19:30 + 3h).
+    // Usamos Date.UTC(ano, mêsIndex, dia, horaUTC, min, seg)
+    const dataEventoUTCms = Date.UTC(2026, 0, 17, 22, 30, 0); // janeiro = 0
+    // alternativa: const dataEventoUTCms = new Date(2026,0,17,19,30,0).getTime(); // local time version
+
+    // função de atualização (separa para teste manual)
+    function atualizar() {
+      const agora = Date.now();
+      const distancia = dataEventoUTCms - agora;
+
+      if (distancia <= 0) {
+        // evento já chegou
+        clearInterval(intervalo);
+        timerContainer.innerHTML = "💍 Chegou o grande dia! 💖";
+        return;
+      }
+
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      diasEl.textContent = String(dias).padStart(2, '0');
+      horasEl.textContent = String(horas).padStart(2, '0');
+      minutosEl.textContent = String(minutos).padStart(2, '0');
+      segundosEl.textContent = String(segundos).padStart(2, '0');
+    }
+
+    // inicializa
+    atualizar();
+    const intervalo = setInterval(atualizar, 1000);
+
+  } catch (err) {
+    console.error('Erro no timer:', err);
+  }
+});
 
 
 // =======================
