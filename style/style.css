@@ -14,6 +14,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.no-hover .button:hover {
+  all: unset;
+}
+
 /* FONTES */
 @font-face {
     font-family: 'Lato-regular';
@@ -40,29 +44,51 @@ html {
     margin: 0 200px;
 }
 
-/* HEADER */
 #header {
-    background-color: #ffffff;
+    background-color: #fff;
     text-align: center;
-    padding: 25px 0;
+    padding: 20px 0;
     position: fixed;
     width: 100%;
     box-shadow: 0px 4px 8px 0px #5d758d1f;
-    opacity: 1;
     z-index: 100;
 }
 
-#header a {
+/* CONTAINER DO MENU */
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* MENU NORMAL (DESKTOP) */
+#menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+#menu a {
     padding: 8px 16px;
     color: #5d758d;
     font: 400 16px 'Lato-Regular', sans-serif;
-    transition: 0.2s all ease-in-out;
     border-radius: 8px;
+    transition: 0.2s all ease-in-out;
 }
 
-#header a:hover {
-    color: #ffffff;
-    background-color: #cd9097;
+/* BOTÃO HAMBÚRGUER */
+.menu-toggle {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #5d758d;
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    right: 20px;
 }
 
 /* SECTION HOME */
@@ -305,13 +331,6 @@ h2 {
     overflow: hidden;
 }
 
-.btn-lista:hover {
-    background-color: #b47f86;
-    transform: scale(1.05);
-    box-shadow: 0 5px 10px rgba(255, 107, 107, 0.6);
-    color: white;
-}
-
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -343,7 +362,7 @@ h2 {
 }
 
 #formPresenca .form,
-#formPresenca .evento{
+#formPresenca .evento {
     margin-bottom: 40px;
 }
 
@@ -382,9 +401,12 @@ h2 {
 }
 
 #presenca textarea {
-    resize: vertical; /* Permite redimensionar só pra baixo */
-    min-height: 80px; /* Altura mínima */
-    max-height: 300px; /* Altura máxima */
+    resize: vertical;
+    /* Permite redimensionar só pra baixo */
+    min-height: 80px;
+    /* Altura mínima */
+    max-height: 300px;
+    /* Altura máxima */
 }
 
 #presenca input[type="radio"] {
@@ -400,7 +422,7 @@ h2 {
 }
 
 #presenca button {
-    display: block;      
+    display: block;
     margin: 40px auto 0;
     padding: 15px 30px;
     background: #cd9097;
@@ -414,63 +436,58 @@ h2 {
     opacity: 1;
 }
 
-#presenca button:hover {
-    background: #a07177;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
 /* --- CAMPOS ADICIONAIS (embaixo) --- */
 #acompanhantes-adultos,
 #nomes-criancas {
-  margin-top: 10px;
-  margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 #acompanhantes-adultos .form,
 #nomes-criancas .form {
-  background: #fff;
-  border: 1px solid #d4dbe3;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 20px 0;
-  animation: fadeIn 0.4s ease;
+    background: #fff;
+    border: 1px solid #d4dbe3;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px 0;
+    animation: fadeIn 0.4s ease;
 }
 
 #acompanhantes-adultos label,
 #nomes-criancas label {
-  display: block;
-  color: #5d758d;
-  font: 700 15px "Lato-bold", sans-serif;
-  margin-bottom: 6px;
+    display: block;
+    color: #5d758d;
+    font: 700 15px "Lato-bold", sans-serif;
+    margin-bottom: 6px;
 }
 
 #acompanhantes-adultos input,
 #nomes-criancas input {
-  width: 100%;
-  height: 44px;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font: 400 15px "Lato-regular", sans-serif;
-  color: #555;
-  box-sizing: border-box;
+    width: 100%;
+    height: 44px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font: 400 15px "Lato-regular", sans-serif;
+    color: #555;
+    box-sizing: border-box;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* TERMINO */
 
-#formPresenca .evento{
+#formPresenca .evento {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -478,6 +495,7 @@ h2 {
     border: 1px solid #d4dbe3;
     background: #fff;
     padding: 16px;
+    flex-wrap: wrap;
 }
 
 #presenca .evento label {
@@ -489,7 +507,7 @@ h2 {
 }
 
 #presenca .evento input[type="number"] {
-    width: 60px; 
+    width: 60px;
     height: 40px;
     margin-left: 20px;
     border: 1px solid #ccc;
@@ -505,7 +523,7 @@ h2 {
     outline: none;
 }
 
-#presenca .radio{
+#presenca .radio {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -553,9 +571,12 @@ h2 {
 }
 
 #formRecado textarea {
-    resize: vertical; /* Permite redimensionar só pra baixo */
-    min-height: 80px; /* Altura mínima */
-    max-height: 300px; /* Altura máxima */
+    resize: vertical;
+    /* Permite redimensionar só pra baixo */
+    min-height: 80px;
+    /* Altura mínima */
+    max-height: 300px;
+    /* Altura máxima */
 }
 
 #formRecado button {
@@ -568,12 +589,6 @@ h2 {
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-#formRecado button:hover {
-    background-color: #b47f86;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(255, 107, 107, 0.4);
 }
 
 /* Lista de recados */
@@ -590,11 +605,6 @@ h2 {
     padding: 15px 20px;
     margin-bottom: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.recado:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
 }
 
 .recado strong {
@@ -615,4 +625,208 @@ h2 {
     font: 700 16px "Lato-bold", sans-serif;
     line-height: 22px;
     white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 768px;
+        margin: 0;
+        padding: 0 70px;
+        box-sizing: border-box;
+    }
+
+    h2 {
+        margin: 30px 0;
+    }
+
+    /* HEADER */
+    .menu-container {
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    #menu {
+        position: absolute;
+        top: 35px;
+        left: 0;
+        background: #fff;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        box-shadow: 0 4px 10px #0000001a;
+    }
+
+    #menu.active {
+        display: flex;
+    }
+
+    #menu a {
+        padding: 15px;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .logo {
+        position: static;
+    }
+
+    /* JUNTOS */
+    .juntos p {
+        margin: 30px 0 0 0;
+    }
+
+    .foto-coracao {
+        width: 80%;
+        height: 80%;
+    }
+
+    /* CERIMONIA */
+    .local img {
+        width: 100%;
+    }
+
+    .mapa {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .mapa iframe {
+        width: 100%;
+        max-width: 400px;
+        border: none;
+        border-radius: 8px;
+    }
+
+    /* SECTION CONFIRME SUA PRESENÇA */
+    #presenca {
+        padding: 20px 10px;
+        max-width: 100%;
+    }
+
+    #formPresenca {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    #formPresenca .form,
+    #formPresenca .evento {
+        margin-bottom: 25px;
+    }
+
+    #presenca .form label,
+    #presenca .evento label {
+        font-size: 15px;
+        text-align: left;
+        display: block;
+        margin-bottom: 6px;
+        white-space: normal;
+    }
+
+    #presenca input,
+    #presenca textarea {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+        height: auto;
+    }
+
+    #presenca textarea {
+        min-height: 100px;
+    }
+
+    /* EVENTOS */
+    #formPresenca .evento {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 10px;
+        padding: 20px;
+    }
+
+    /* INPUTS DE NÚMERO */
+    #presenca .evento input[type="number"] {
+        width: 80px;
+        height: 38px;
+        font-size: 15px;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    /* CAMPOS ADICIONAIS */
+    #acompanhantes-adultos .form,
+    #nomes-criancas .form {
+        padding: 12px;
+    }
+
+    /* BOTÃO */
+    #presenca button {
+        width: 100%;
+        padding: 16px;
+        font-size: 15px;
+        border-radius: 12px;
+        margin-top: 20px;
+    }
+
+    /* RADIOS */
+    #presenca .radio {
+        border: 1px solid #d4dbe3;
+        border-radius: 8px;
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0;
+    }
+
+    #presenca .radio input[type="radio"] {
+        margin-right: 10px;
+        width: 16px;
+        height: 16px;
+    }
+
+    #presenca .radio label {
+        margin: 0;
+        padding: 0;
+        color: #5d758d;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #menu a:hover {
+        color: #fff;
+        background-color: #cd9097;
+    }
+
+    .btn-lista:hover {
+        background-color: #b47f86;
+        transform: scale(1.05);
+        box-shadow: 0 5px 10px rgba(255, 107, 107, 0.6);
+        color: white;
+    }
+
+    #presenca button:hover {
+        background: #a07177;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #formRecado button:hover {
+        background-color: #b47f86;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(255, 107, 107, 0.4);
+    }
+
+    .recado:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
+    }
 }

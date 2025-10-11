@@ -1,3 +1,17 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    toggle.addEventListener('click', function() {
+      menu.classList.toggle('active');
+    });
+  });
+
+if ('ontouchstart' in window || navigator.maxTouchPoints) {
+  document.body.classList.add('no-hover');
+}
+
+
 // =======================
 // TIMER DO EVENTO
 // =======================

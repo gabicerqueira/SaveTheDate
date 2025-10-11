@@ -7,20 +7,26 @@
     <title>Bianca e Murillo - Save The Date</title>
     <link rel="stylesheet" href="style/style.css">
     <script src="js/script.js"></script>
+    <link rel="icon" href="images/wedding-ring.png">
 </head>
 
 <body>
     <header>
         <div id="header">
-            <nav>
-                <a href="#home">HOME</a>
-                <a href="#ocasal">O CASAL</a>
-                <a href="#cerimonia">CERIMÔNIA</a>
-                <a href="#recepcao">RECEPÇÃO</a>
-                <a href="#presentes">LISTA DE PRESENTES</a>
-                <a href="#presenca">CONFIRME SUA PRESENÇA</a>
-                <a href="#recados">RECADOS</a>
-            </nav>
+            <div class="menu-container">
+                <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+                    ☰
+                </button>
+                <nav id="menu">
+                    <a href="#home">HOME</a>
+                    <a href="#ocasal">O CASAL</a>
+                    <a href="#cerimonia">CERIMÔNIA</a>
+                    <a href="#recepcao">RECEPÇÃO</a>
+                    <a href="#presentes">LISTA DE PRESENTES</a>
+                    <a href="#presenca">CONFIRME SUA PRESENÇA</a>
+                    <a href="#recados">RECADOS</a>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -55,13 +61,12 @@
     <div class="container">
         <div class="foto">
             <img src="images/casal.jpeg" alt="Foto da Bianca e do Murillo">
-            <p>Criamos esse site para compartilhar com vocês os detalhes da organização do nosso casamento. Estamos
-                muito felizes e contamos com a presença de todos no nosso grande dia! Aqui vocês encontrarão também
-                dicas para hospedagem, salão de beleza, trajes, estacionamento, etc. Ah, é importante também confirmar
-                sua presença. Para isto contamos com sua ajuda clicando no menu “Confirme sua Presença” e preenchendo os
-                dados necessários. Para nos presentear, escolha qualquer item da Lista de Casamento, seja um item de
-                algum dos sites, lojas físicas, ou então vocês podem utilizar a opção de cotas. Fiquem à vontade!
-                Aguardamos vocês no nosso grande dia!</p>
+            <p>Criamos este site para compartilhar com vocês os detalhes da organização do nosso casamento.
+                Estamos muito felizes e contamos com a presença de todos no nosso grande dia!
+                Ah, é importante confirmar sua presença! Para isso, basta clicar no menu “Confirme sua Presença” e
+                preencher os dados solicitados.
+                Para nos presentear, fiquem à vontade para escolher qualquer item da Lista de Casamento.
+                Aguardamos vocês com muito carinho no nosso grande dia! 💍✨</p>
         </div>
 
         <section id="ocasal">
@@ -149,7 +154,7 @@
                 </div>
 
                 <div class="evento">
-                    <label>Você irá ao evento?</label><br>
+                    <label>Você irá ao evento?</label>
                     <div class="radio">
                         <input type="radio" id="sim" name="presenca" value="sim" required>
                         <label for="sim">Sim</label>
