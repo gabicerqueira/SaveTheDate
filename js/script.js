@@ -1,4 +1,17 @@
+// Função pra mostrar debug na tela (visível no mobile)
+function showDebug(msg, isError = false) {
+    const debugEl = document.getElementById('debug');
+    if (debugEl) {
+        debugEl.innerHTML += msg + '<br>';
+        if (isError) debugEl.style.display = 'block';
+        console.log(msg); // Também pro console se disponível
+    } else {
+        alert(msg); // Fallback se nem debug div tiver
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    showDebug('DOM carregado. Iniciando menu...');
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
 
@@ -6,23 +19,25 @@ document.addEventListener('DOMContentLoaded', function() {
         toggle.addEventListener('click', function() {
             menu.classList.toggle('active');
         });
+        showDebug('Menu OK');
     } else {
-        console.warn('Menu elements not found');
+        showDebug('ERRO: Menu elements not found', true);
     }
 });
 
 if ('ontouchstart' in window || navigator.maxTouchPoints) {
     document.body.classList.add('no-hover');
+    showDebug('Modo touch detectado');
 }
 
 // =======================
-// TIMER DO EVENTO (VERSÃO MOBILE-FRIENDLY)
+// TIMER DO EVENTO (COM DEBUG VISUAL)
 // =======================
 function initTimer() {
-    console.log('Iniciando timer...'); // Log inicial
+    showDebug('Tentando iniciar timer...');
 
     try {
-        // Elementos (com verificação extra)
+        // Elementos
         const diasEl = document.getElementById("dias");
         const horasEl = document.getElementById("horas");
         const minutosEl = document.getElementById("minutos");
@@ -30,32 +45,33 @@ function initTimer() {
         const timerContainer = document.getElementById("timer");
 
         if (!diasEl || !horasEl || !minutosEl || !segundosEl || !timerContainer) {
-            console.warn('Timer: elementos do DOM não encontrados. Abortando timer.');
+            showDebug('ERRO: Elementos do timer não encontrados! Verifique IDs no HTML: dias, horas, minutos, segundos, timer', true);
             return;
         }
 
-        console.log('Elementos do timer encontrados OK!'); // Log de sucesso
+        showDebug('Elementos do timer OK!');
 
-        // Data do evento em UTC (mesma que antes)
+        // Data evento UTC
         const dataEventoUTCms = Date.UTC(2026, 0, 17, 22, 30, 0);
-        console.log('Data evento UTC ms:', dataEventoUTCms); // Log pra comparar com Date.now()
-        console.log('Agora (Date.now()):', Date.now()); // Log atual
+        const agoraInicial = Date.now();
+        showDebug(`Data evento: ${dataEventoUTCms} ms | Agora: ${agoraInicial} ms | Distância inicial: ${dataEventoUTCms - agoraInicial} ms`);
 
-        let isRunning = true;
+        let ticks = 0; // Contador pra ver se atualiza
 
-        // Função de atualização
         function atualizar() {
-            if (!isRunning) return;
-
+            ticks++;
             const agora = Date.now();
             const distancia = dataEventoUTCms - agora;
-            console.log('Atualizando timer. Distância ms:', distancia); // Log a cada tick (remova depois se spam)
+
+            // Debug visual: Mostra ticks a cada 10s (não spam)
+            if (ticks % 10 === 0) {
+                showDebug(`Tick ${ticks}: Distância ${distancia} ms (segundos: ${Math.floor(distancia / 1000)})`);
+            }
 
             if (distancia <= 0) {
-                clearInterval(intervalo); // Se usar interval
-                isRunning = false;
+                clearInterval(intervalo);
                 timerContainer.innerHTML = "💍 Chegou o grande dia! 💖";
-                console.log('Timer finalizado: evento chegou!');
+                showDebug('Timer finalizado: Evento chegou!');
                 return;
             }
 
@@ -68,48 +84,39 @@ function initTimer() {
             horasEl.textContent = String(horas).padStart(2, '0');
             minutosEl.textContent = String(minutos).padStart(2, '0');
             segundosEl.textContent = String(segundos).padStart(2, '0');
+
+            // Se ticks > 5 mas segundos não mudam, avisa
+            if (ticks > 5 && segundos === 0) {
+                showDebug('AVISO: Timer não está atualizando segundos! Pode ser throttle no Safari.', true);
+            }
         }
 
         // Inicializa
         atualizar();
 
-        // Usa requestAnimationFrame pra mobile (roda ~60fps, mas chamamos a cada 1s)
-        let lastTime = 0;
-        function loop(currentTime) {
-            if (currentTime - lastTime >= 1000) { // A cada 1s
-                atualizar();
-                lastTime = currentTime;
-            }
-            if (isRunning) {
-                requestAnimationFrame(loop);
-            }
-        }
-        requestAnimationFrame(loop);
-
-        // Fallback: setInterval se requestAnimationFrame não for suportado (raro)
+        // Intervalo simples (1000ms)
         const intervalo = setInterval(atualizar, 1000);
 
-        console.log('Timer iniciado com sucesso!');
+        showDebug('Timer iniciado! Aguarde ticks nos logs.');
 
     } catch (err) {
-        console.error('Erro no timer:', err);
+        showDebug(`ERRO no timer: ${err.message}`, true);
     }
 }
 
-// Inicia no DOMContentLoaded, com fallback no load (pra mobile lento)
-document.addEventListener('DOMContentLoaded', initTimer);
+// Inicia múltiplos fallbacks pra mobile lento
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initTimer, 100); // Delay pequeno
+});
 window.addEventListener('load', function() {
-    if (!document.body.classList.contains('timer-inited')) { // Evita duplo init
-        document.body.classList.add('timer-inited');
-        initTimer();
-    }
+    setTimeout(initTimer, 500); // Delay maior se load for lento
 });
 
 // =======================
-// FORMULÁRIO DINÂMICO E WHATSAPP (sem mudanças, mas com logs extras)
+// FORMULÁRIO (com debug básico, sem mudanças grandes)
 // =======================
 document.addEventListener("DOMContentLoaded", function () {
-    console.log('Iniciando form...'); // Log
+    showDebug('Iniciando form...');
 
     const adultosInput = document.getElementById('adultos');
     const criancasInput = document.getElementById('criancas');
@@ -118,13 +125,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById('formPresenca');
 
     if (!adultosInput || !criancasInput || !acompanhantesContainer || !criancasContainer || !form) {
-        console.warn('Form elements not found');
+        showDebug('ERRO: Elementos do form não encontrados!', true);
         return;
     }
 
-    console.log('Elementos do form encontrados OK!'); // Log
+    showDebug('Form OK');
 
-    // ===== ADULTOS
+    // Resto do código do form igual ao anterior (adultos, criancas, submit)
     adultosInput.addEventListener('input', () => {
         const qtd = parseInt(adultosInput.value) || 1;
         acompanhantesContainer.innerHTML = '';
@@ -142,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ===== CRIANÇAS
     criancasInput.addEventListener('input', () => {
         const qtd = parseInt(criancasInput.value) || 0;
         criancasContainer.innerHTML = '';
@@ -160,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ===== ENVIO DO FORMULÁRIO
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -190,6 +195,6 @@ Obrigado!`;
 
         const numeroNoiva = '5511970204225';
         window.open(`https://wa.me/${numeroNoiva}?text=${encodeURIComponent(mensagem)}`, '_blank');
-        console.log('Form enviado pro WhatsApp'); // Log
+        showDebug('Form enviado pro WhatsApp');
     });
 });
