@@ -15,7 +15,7 @@ html {
 }
 
 .no-hover .button:hover {
-  all: unset;
+    all: unset;
 }
 
 /* FONTES */
@@ -179,6 +179,7 @@ html {
 
 .foto img {
     width: 80%;
+    border-radius: 20px;
 }
 
 .foto p {
@@ -244,6 +245,10 @@ h2 {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
+}
+
+.local img{
+    border-radius: 20px;
 }
 
 .infos p {
@@ -631,7 +636,7 @@ h2 {
     .container {
         max-width: 768px;
         margin: 0;
-        padding: 0 50px;
+        padding: 0 40px;
         box-sizing: border-box;
     }
 
@@ -683,6 +688,14 @@ h2 {
     .foto-coracao {
         width: 80%;
         height: 80%;
+    }
+
+    .foto img {
+        width: 100%;
+    }
+
+    .foto p {
+        width: 100%;
     }
 
     /* CERIMONIA */
@@ -798,10 +811,14 @@ h2 {
         padding: 0;
         color: #5d758d;
     }
+
+    .card-lista {
+        padding: 15px;
+    }
 }
 
 @media (hover: hover) and (pointer: fine) {
-  #menu a:hover {
+    #menu a:hover {
         color: #fff;
         background-color: #cd9097;
     }
