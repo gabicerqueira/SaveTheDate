@@ -15,7 +15,7 @@ if ('ontouchstart' in window || navigator.maxTouchPoints) {
 // =======================
 // TIMER DO EVENTO
 // =======================
-const dataEvento = new Date("2026-01-17T19:30:00-03:00").getTime();
+const dataEvento = new Date(2026, 0, 17, 19, 30, 0).getTime();
 
 const intervalo = setInterval(function () {
     const agora = new Date().getTime();
