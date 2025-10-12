@@ -94,7 +94,7 @@ html {
 /* SECTION HOME */
 /* SAVE */
 #home .save {
-    background-image: url(/images/fundo_save.jpg);
+    background-image: url(images/fundo_save.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
