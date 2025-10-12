@@ -149,9 +149,9 @@ const btn = document.getElementById('btnMusica');
 // função pra atualizar imagem do botão
 function atualizarBotao() {
   if (musica.paused) {
-    btn.style.backgroundImage = "url('../images/play.png')";
+    btn.style.backgroundImage = "url('/images/play.png')";
   } else {
-    btn.style.backgroundImage = "url('../images/pause.png')";
+    btn.style.backgroundImage = "url('/images/pause.png')";
   }
 }
 

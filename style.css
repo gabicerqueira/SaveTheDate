@@ -94,7 +94,7 @@ html {
 /* SECTION HOME */
 /* SAVE */
 #home .save {
-    background-image: url(../images/fundo_save.jpg);
+    background-image: url(/images/fundo_save.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
@@ -640,8 +640,8 @@ h2 {
   left: 15px;
   width: 35px;
   height: 35px;
-  background-image: url('../images/play.png'); /* imagem do botão play */
-  background-size: contain;
+  background-image: url('/images/play.png'); /* imagem do botão play */
+  background-size: cover;
   background-position: center;
   border: none;
   cursor: pointer;
