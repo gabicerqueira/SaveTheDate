@@ -638,10 +638,10 @@ h2 {
   position: fixed;
   top: 15px;
   left: 15px;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   background-color: rgba(255, 192, 203, 0.15); /* fundo rosinha bem suave */
-  border: 2px solid #ff9ec7; /* borda rosa */
+  border: 2px solid #cd9097; /* borda rosa */
   border-radius: 50%;
   cursor: pointer;
   outline: none;
@@ -665,7 +665,7 @@ h2 {
   height: 0;
   border-style: solid;
   border-width: 10px 0 10px 18px;
-  border-color: transparent transparent transparent #ff9ec7; /* ícone play rosinha */
+  border-color: transparent transparent transparent #cd9097; /* ícone play rosinha */
   transition: all 0.2s ease;
 }
 
@@ -674,7 +674,7 @@ h2 {
   width: 14px;
   height: 14px;
   border: none;
-  background: linear-gradient(to right, #ff9ec7 40%, transparent 40%, transparent 60%, #ff9ec7 60%);
+  background: linear-gradient(to right, #cd9097 40%, transparent 40%, transparent 60%, #cd9097 60%);
 }
 
 @media (max-width: 768px) {
