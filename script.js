@@ -146,25 +146,24 @@ Obrigado!`;
 const musica = document.getElementById('musica');
 const btn = document.getElementById('btnMusica');
 
-// função pra atualizar imagem do botão
 function atualizarBotao() {
   if (musica.paused) {
-    btn.style.backgroundImage = "url('../images/play.png')";
+    btn.classList.remove('pausando'); // mostra play
   } else {
-    btn.style.backgroundImage = "url('../images/pause.png')";
+    btn.classList.add('pausando'); // mostra pause
   }
 }
 
-// tenta tocar automaticamente em modo silencioso
+// tenta tocar automaticamente (muted)
 musica.muted = true;
 musica.play().then(() => {
   musica.muted = false;
-  setTimeout(atualizarBotao, 100);
+  atualizarBotao();
 }).catch(() => {
-  setTimeout(atualizarBotao, 100);
+  atualizarBotao();
 });
 
-// garante que qualquer interação destrave o áudio
+// ativa som na primeira interação
 ['click', 'touchstart', 'scroll', 'keydown'].forEach(evento => {
   window.addEventListener(evento, () => {
     if (musica.paused) {
@@ -176,7 +175,7 @@ musica.play().then(() => {
   }, { once: true });
 });
 
-// botão play/pause
+// alterna play/pause ao clicar
 btn.addEventListener('click', () => {
   if (musica.paused) {
     musica.play().then(() => {
@@ -188,5 +187,7 @@ btn.addEventListener('click', () => {
     atualizarBotao();
   }
 });
+
+setTimeout(atualizarBotao, 500);
 
 });

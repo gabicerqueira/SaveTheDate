@@ -638,24 +638,43 @@ h2 {
   position: fixed;
   top: 15px;
   left: 15px;
-  width: 35px; /* tamanho fixo ajuda no mobile */
-  height: 35px;
-  background-color: rgb(255, 0, 0);
-  border: none;
-  outline: none;
+  width: 45px;
+  height: 45px;
+  background-color: rgba(255, 192, 203, 0.15); /* fundo rosinha bem suave */
+  border: 2px solid #ff9ec7; /* borda rosa */
+  border-radius: 50%;
   cursor: pointer;
+  outline: none;
   z-index: 9999;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* efeito hover */
 #btnMusica:hover {
+  background-color: rgba(255, 192, 203, 0.25);
   transform: scale(1.1);
 }
 
-#musica {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  z-index: 9998;
+/* ícone SVG (play e pause) */
+#btnMusica::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent #ff9ec7; /* ícone play rosinha */
+  transition: all 0.2s ease;
+}
+
+#btnMusica.pausando::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border: none;
+  background: linear-gradient(to right, #ff9ec7 40%, transparent 40%, transparent 60%, #ff9ec7 60%);
 }
 
 @media (max-width: 768px) {
