@@ -640,11 +640,7 @@ h2 {
   left: 15px;
   width: 35px; /* tamanho fixo ajuda no mobile */
   height: 35px;
-  background-image: url('images/play.png'); /* caminho sem ../ */
-  background-size: cover; /* cobre o botão todo */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgb(255, 0, 0);
   border: none;
   outline: none;
   cursor: pointer;
