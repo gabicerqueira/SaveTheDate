@@ -142,16 +142,16 @@ Obrigado!`;
 
 
 
-  // MUSICA
-  const musica = document.getElementById('musica');
+// MUSICA
+const musica = document.getElementById('musica');
 const btn = document.getElementById('btnMusica');
 
 // função pra atualizar imagem do botão
 function atualizarBotao() {
   if (musica.paused) {
-    btn.style.backgroundImage = "url('/images/play.png')";
+    btn.style.backgroundImage = "url('../images/play.png')";
   } else {
-    btn.style.backgroundImage = "url('/images/pause.png')";
+    btn.style.backgroundImage = "url('../images/pause.png')";
   }
 }
 
@@ -159,10 +159,9 @@ function atualizarBotao() {
 musica.muted = true;
 musica.play().then(() => {
   musica.muted = false;
-  atualizarBotao();
+  setTimeout(atualizarBotao, 100);
 }).catch(() => {
-  // autoplay bloqueado — aguarda interação
-  atualizarBotao();
+  setTimeout(atualizarBotao, 100);
 });
 
 // garante que qualquer interação destrave o áudio
