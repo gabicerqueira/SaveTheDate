@@ -21,22 +21,22 @@ html {
 /* FONTES */
 @font-face {
     font-family: 'Lato-regular';
-    src: url(../fonts/Lato/Lato-Regular.ttf);
+    src: url(fonts/Lato/Lato-Regular.ttf);
 }
 
 @font-face {
     font-family: 'Lato-bold';
-    src: url(../fonts/Lato/Lato-Bold.ttf);
+    src: url(fonts/Lato/Lato-Bold.ttf);
 }
 
 @font-face {
     font-family: 'Questrial';
-    src: url(../fonts/Questrial-Regular.ttf);
+    src: url(fonts/Questrial-Regular.ttf);
 }
 
 @font-face {
     font-family: 'Corinthia-regular';
-    src: url(../fonts/Corinthia/Corinthia-Regular.ttf);
+    src: url(fonts/Corinthia/Corinthia-Regular.ttf);
 }
 
 /* CONTAINER */
@@ -638,16 +638,17 @@ h2 {
   position: fixed;
   top: 15px;
   left: 15px;
-  width: 35px;
+  width: 35px; /* tamanho fixo ajuda no mobile */
   height: 35px;
-  background-image: url('/images/play.png'); /* imagem do botão play */
-  background-size: cover;
+  background-image: url('images/play.png'); /* caminho sem ../ */
+  background-size: cover; /* cobre o botão todo */
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
   border: none;
+  outline: none;
   cursor: pointer;
   z-index: 9999;
-  transition: transform 0.2s ease;
-  background-color: transparent;
 }
 
 #btnMusica:hover {
