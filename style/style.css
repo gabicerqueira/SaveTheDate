@@ -247,7 +247,7 @@ h2 {
     text-align: center;
 }
 
-.local img{
+.local img {
     border-radius: 20px;
 }
 
@@ -630,6 +630,35 @@ h2 {
     font: 700 16px "Lato-bold", sans-serif;
     line-height: 22px;
     white-space: nowrap;
+}
+
+
+/* MUSIC */
+#btnMusica {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 35px;
+  height: 35px;
+  background-image: url('../images/play.png'); /* imagem do botão play */
+  background-size: contain;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.2s ease;
+  background-color: transparent;
+}
+
+#btnMusica:hover {
+  transform: scale(1.1);
+}
+
+#musica {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 9998;
 }
 
 @media (max-width: 768px) {

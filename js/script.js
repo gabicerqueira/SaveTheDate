@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // =======================
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('menu');
-  if(toggle && menu){
-    toggle.addEventListener('click', function() {
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
       menu.classList.toggle('active');
     });
   }
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const mensagemTeste = document.getElementById("mensagem-teste");
 
   if (!diasEl || !horasEl || !minutosEl || !segundosEl || !timerContainer) {
-    if(mensagemTeste) mensagemTeste.textContent = "Timer: elementos do DOM não encontrados!";
+    if (mensagemTeste) mensagemTeste.textContent = "Timer: elementos do DOM não encontrados!";
   } else {
     const dataEvento = new Date('2026-01-17T19:30:00-03:00'); // horário de Brasília
     const dataEventoUTCms = dataEvento.getTime();
@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const agora = Date.now();
       const distancia = dataEventoUTCms - agora;
 
-      if(mensagemTeste) mensagemTeste.textContent = "Distância em ms: " + distancia;
+      if (mensagemTeste) mensagemTeste.textContent = "Distância em ms: " + distancia;
 
       if (distancia <= 0) {
         clearInterval(intervalo);
         timerContainer.innerHTML = "💍 Chegou o grande dia! 💖";
-        if(mensagemTeste) mensagemTeste.textContent = "O evento chegou!";
+        if (mensagemTeste) mensagemTeste.textContent = "O evento chegou!";
         return;
       }
 
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('formPresenca');
 
   // ===== ADULTOS
-  if(adultosInput && acompanhantesContainer){
+  if (adultosInput && acompanhantesContainer) {
     adultosInput.addEventListener('input', () => {
       const qtd = parseInt(adultosInput.value) || 1;
       acompanhantesContainer.innerHTML = '';
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ===== CRIANÇAS
-  if(criancasInput && criancasContainer){
+  if (criancasInput && criancasContainer) {
     criancasInput.addEventListener('input', () => {
       const qtd = parseInt(criancasInput.value) || 0;
       criancasContainer.innerHTML = '';
@@ -107,8 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ===== ENVIO DO FORMULÁRIO
-  if(form){
-    form.addEventListener('submit', function(e) {
+  if (form) {
+    form.addEventListener('submit', function (e) {
       e.preventDefault(); // evita reload
 
       const nome = document.getElementById('nome')?.value || 'Não informado';
@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const nomesCriancas = [...document.querySelectorAll('#nomes-criancas input')].map(i => i.value).join(', ') || 'Nenhuma';
       const obs = document.getElementById('obs')?.value || 'Sem observações';
 
-      const mensagem = 
-`*Confirmação de Presença* 
+      const mensagem =
+        `*Confirmação de Presença* 
 
 Nome: ${nome}
 Telefone: ${telefone}
@@ -139,5 +139,55 @@ Obrigado!`;
       window.open(`https://wa.me/${numeroNoiva}?text=${encodeURIComponent(mensagem)}`, '_blank');
     });
   }
+
+
+
+  // MUSICA
+  const musica = document.getElementById('musica');
+const btn = document.getElementById('btnMusica');
+
+// função pra atualizar imagem do botão
+function atualizarBotao() {
+  if (musica.paused) {
+    btn.style.backgroundImage = "url('../images/play.png')";
+  } else {
+    btn.style.backgroundImage = "url('../images/pause.png')";
+  }
+}
+
+// tenta tocar automaticamente em modo silencioso
+musica.muted = true;
+musica.play().then(() => {
+  musica.muted = false;
+  atualizarBotao();
+}).catch(() => {
+  // autoplay bloqueado — aguarda interação
+  atualizarBotao();
+});
+
+// garante que qualquer interação destrave o áudio
+['click', 'touchstart', 'scroll', 'keydown'].forEach(evento => {
+  window.addEventListener(evento, () => {
+    if (musica.paused) {
+      musica.play().then(() => {
+        musica.muted = false;
+        atualizarBotao();
+      }).catch(() => {});
+    }
+  }, { once: true });
+});
+
+// botão play/pause
+btn.addEventListener('click', () => {
+  if (musica.paused) {
+    musica.play().then(() => {
+      musica.muted = false;
+      atualizarBotao();
+    }).catch(() => {});
+  } else {
+    musica.pause();
+    atualizarBotao();
+  }
+});
 
 });

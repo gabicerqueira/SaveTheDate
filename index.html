@@ -30,6 +30,13 @@
         </div>
     </header>
 
+    <audio id="musica" autoplay loop preload="auto">
+        <source src="music/Bruno Mars - Marry You (Official Lyric Video).mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <button id="btnMusica"></button>
+
     <section id="home">
         <div class="save">
             <div class="p-save">
@@ -204,8 +211,6 @@
         </section>
 
     </div>
-
-    <div id="debug" style="position:fixed;top:0;left:0;background:red;color:white;padding:10px;z-index:9999;display:none;font-size:12px;"></div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
