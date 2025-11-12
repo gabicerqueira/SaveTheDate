@@ -135,7 +135,7 @@ Observações: ${obs}
 
 Obrigado!`;
 
-      const numeroNoiva = '5511970204225';
+      const numeroNoiva = '5511989002131';
       window.open(`https://wa.me/${numeroNoiva}?text=${encodeURIComponent(mensagem)}`, '_blank');
     });
   }
