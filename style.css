@@ -790,6 +790,15 @@ h2 {
         width: 100%;
     }
 
+    .foto .fotos-principais {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas:
+            "img1 img5"
+            "img2 img5"
+            "img3 img4";
+    }
+
     /* CERIMONIA */
     .local img {
         width: 100%;
